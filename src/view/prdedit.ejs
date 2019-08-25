@@ -5,8 +5,8 @@
   <title>Wines &mdash; Website Template by Colorlib</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<base href="/">
-  
+
+  <base href="/">
   <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet"> 
 
   <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -33,7 +33,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-  
+  <form action="/admin/update/<%= arr_prd.itempic%>" method="POST">  
   <div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
@@ -72,9 +72,9 @@
             <nav class="site-navigation position-relative text-left" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
                 <%for( var i=0;i<nav.length;i++){%>
-                <li class="active"><a href="<%=nav[i].link%>" class="nav-link text-left"><%= nav[i].title%></a></li>
-                
-                <%}%>
+                  <li class="active"><a href="<%=nav[i].link%>" class="nav-link text-left"><%= nav[i].title%></a></li>
+                  
+                  <%}%>
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
 
@@ -88,72 +88,62 @@
     </div>
 
     
-    <div class="owl-carousel hero-slide owl-style">
-        <!-- <div class="container"> -->
-      
-        <div class="row justify-content-center text-center align-items-center">
-          <div class="col-md-8">
-            <span class="sub-title"></span>
-           
-                <div class="site-section  pb-0">
-                    <div class="container">
-                      <div class="row mb-5 justify-content-center">
-                        <div class="col-7 section-title text-center mb-5">
-                          <h2 class="d-block">Modifiy Product Details Here...</h2>
-                        </div>
-                      </div>
-                      <div class="row mb-5">
-                        <form class="col-md-12" method="post">
-                          <div class="site-blocks-table">
-                                <!-- <form action="/admin/update/<%= arr_prd.itempic%>" method="POST"> -->
-                            <table class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th class="product-thumbnail">Image</th>
-                                  <th class="product-name">Product</th>
-                                  <th class="product-price">Price</th>
-                                  <th class="product-quantity">Quantity</th>
-                                  <th></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                               
-                                <tr>
-                                  <td class="product-thumbnail">
-                                    <img src="http://localhost:4000/admin/viewpic/<%= arr_prd.itempic%>" height="50px" width="50px" class="img-thumbnail">
-                                  </td>
-                                  <td class="product-name">
-                                    <h2 class="h5 cart-product-title text-black"><%=arr_prd.itemname%></h2>
-                                  </td>
-                                  <td><input type="text" name="iprice" value="<%=arr_prd.itemprice%>"></td>
-                                  <td><input type="text" name="iqty" value="<%=arr_prd.itemqty%>"></td>
-                                  <td><a href="/admin/update/<%=arr_prd.itemname%>" class="btn btn-primary height-auto btn-sm">?</a></td></td>
-                                  <!-- <td><input type="submit" class="btn btn-primary height-auto btn-sm" value="submit"></td> -->
-                                    <!-- <div class="input-group mb-3" style="max-width: 120px;">
-                                     
-                                      <input type="text" class="form-control text-center border mr-0" value="1" placeholder=""
-                                        aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                      
-                                    </div> -->
-                  
-                                <!-- </form> -->
-                  
-                                
-                              </tbody>
-                            </table>
-                          </div>
-                        </form>
-                      </div>
-                  
-                    </div>
-                  </div>
-         
-        
-        </div>
-    </div>
-   
-    </div>
     
+    
+
+      
+    
+
+    <div class="site-section  pb-0">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-7 section-title text-center mb-5">
+            <h2 class="d-block">Update Data</h2>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-quantity"></th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                         
+                  <tr>
+                    <td class="product-thumbnail">
+                      <img src="http://localhost:4000/admin/viewpic/<%= arr_prd.itempic%>" height="50px" width="50px" class="img-thumbnail">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 cart-product-title text-black"><%=arr_prd.itemname%></h2>
+                    </td>
+                    <td><input type="text" name="ipricei" value="<%=arr_prd.itemprice%>"></td>
+                    <td><input type="text" name="iqtyi" value="<%=arr_prd.itemqty%>"></td>
+                    <td><input type="submit" class="btn btn-primary height-auto btn-sm" value="Update"></td>
+                   
+    
+                 
+                  
+                
+              </form>
+    
+              </table>
+            </div>
+          </form>
+        </div>
+    
+      </div>
+    </div>
+
+    
+
     
     <div class="footer">
       <div class="container">

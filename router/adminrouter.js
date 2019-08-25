@@ -32,7 +32,7 @@ rot.get("/view",function(req,res){
         if(err)throw err
         else
         {
-            console.log(result)
+           // console.log(result)
             res.render("adminview",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}],arr_prd:result})
         }
     })
@@ -77,23 +77,38 @@ rot.get("/edit/:name",function(req,res){
         res.render("prdedit",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}],arr_prd:result})
     })
 })
-rot.get("/update/:name",function(req,res){
+rot.post("/update/:name",function(req,res){
     name=req.params.name
-    qty=req.body.iqty
+    console.log(name)
+    qty=req.body.iqtyi
     console.log(qty)
 
-    price=req.body.iprice
+    price=req.body.ipricei
     console.log(price)
-    add.updateOne({itemname:name},{$set:{itemprice:price,itemqty:qty}},function(err,result){
+    
+   var qry={"itempic":name};
+   
+   var upvle={$set:{itemprice:price,itemqty:qty}};
+    add.updateOne(qry,upvle,function(err,result){
         console.log(result)
         if (err) throw err;
-   
- 
         else{
          console.log("1 document updated");
         
      res.redirect('/admin/view')
         }
     })
-    
+
+})
+rot.get("/delete/:id",function(req,res){
+    var idi=req.params.id
+    console.log(idi)
+    var qry={itemname:idi};
+    add.deleteOne(qry,function(err,obj){
+        if(err)throw err
+        else{
+          //  console.log(result)
+            res.redirect('/admin/view')
+        }
+    })
 })
