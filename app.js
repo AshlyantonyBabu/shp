@@ -11,6 +11,7 @@ var mon=require('mongoose')
 var url="mongodb+srv://ashly:ashly@cluster0-nybb2.mongodb.net/winedb?retryWrites=true&w=majority"
    // var url="mongodb://localhost/dbadditem"     
 var add=require("./model/user")
+
 app.use(bdy.urlencoded({extended:true}))
 mon.connect(url,function(err){
     if(err)throw err
@@ -22,7 +23,7 @@ mon.connect(url,function(err){
 app.use("/admin",rrt)
 app.use("/user",rr)
 app.get("/",function(req,res){
-    res.render("index",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}]})
+    res.render("index",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/user/view",title:"SHOP"}]})
 })
 app.listen(process.env.PORT|| 4000,function(req,res){
     console.log("server is ready.......")
@@ -30,10 +31,10 @@ app.listen(process.env.PORT|| 4000,function(req,res){
 })
 app.get("/login",function(req,res){
 
-    res.render("login",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}]})
+    res.render("login",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/user/view",title:"SHOP"}]})
 })
 app.get("/register",function(req,res){
-    res.render("register",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}]})
+    res.render("register",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/user/view",title:"SHOP"}]})
 })
 app.post("/check",function(req,res){
    
@@ -48,10 +49,10 @@ app.post("/check",function(req,res){
     else{
         console.log(result)
         if(result.role=="Admin"){
-        res.render("check",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}]})
+        res.render("check",{nav:[{link:"/",title:"HOME"},{link:"/admin/view",title:"SHOP"}]})
             }
          else{
-        res.send("user")
+       res.redirect('/user/view')
         }
     
    

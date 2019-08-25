@@ -33,7 +33,7 @@ rot.get("/view",function(req,res){
         else
         {
            // console.log(result)
-            res.render("adminview",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}],arr_prd:result})
+            res.render("adminview",{nav:[{link:"/",title:"HOME"},{link:"/admin/view",title:"SHOP"}],arr_prd:result})
         }
     })
     
@@ -49,7 +49,7 @@ rot.post("/check",function(req,res){
     console.log(req.body.uname1)
     p=req.body.pass1;
     if(u=="Admin"){
-      res.render("check",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}]})
+      res.render("check",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/admin/view",title:"SHOP"}]})
     }
 })
        // res.send("user...")
@@ -74,7 +74,7 @@ rot.get("/edit/:name",function(req,res){
     name=req.params.name
     add.findOne({itemname:name},function(err,result){
         console.log(result)
-        res.render("prdedit",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"},{link:"/shop",title:"SHOP"}],arr_prd:result})
+        res.render("prdedit",{nav:[{link:"/",title:"HOME"},{link:"/login",title:"LOGIN"}],arr_prd:result})
     })
 })
 rot.post("/update/:name",function(req,res){
